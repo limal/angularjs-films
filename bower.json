@@ -1,0 +1,19 @@
+{
+  "name": "films",
+  "dependencies": {
+    "angularjs": "latest",
+    "angular-route": "latest"
+  },
+  "version": "0.0.0",
+  "authors": [
+    "Written for s***s***group.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

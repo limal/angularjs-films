@@ -1,0 +1,14 @@
+<div>
+    <div ng-show="processing" class="alert alert-info">
+        {{processing}}
+    </div>
+    <form class="submit-user" class="form-group" ng-submit="changeCompany(company)">
+        <div class="form-group">
+            <label for="company">Company</label>
+            <select class="form-control" ng-model="company.name" id="company" onChange="this.submit">
+                <option>All</option>
+                <option>None</option>
+            </select>
+        </div>
+    </form>
+</div>

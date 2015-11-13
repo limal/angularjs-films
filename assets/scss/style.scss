@@ -1,0 +1,11 @@
+$bg_color: #ffffff;
+
+body {
+    background: $bg_color;
+    color: #333333;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 800px;
+}

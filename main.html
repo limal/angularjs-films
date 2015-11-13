@@ -2,13 +2,26 @@
     <div ng-show="processing" class="alert alert-info">
         {{processing}}
     </div>
-    <form class="submit-user" class="form-group" ng-submit="changeCompany(company)">
+    <form class="form-group" ng-submit="changeCompany(company)">
         <div class="form-group">
-            <label for="company">Company</label>
-            <select class="form-control" ng-model="company.name" id="company" onChange="this.submit">
-                <option>All</option>
-                <option>None</option>
+            <label for="selectedCompany">Filter by company</label>
+            <!-- For some reason unique: 'company.name' didn't work so I had to filter the list in films.js -->
+            <select class="form-control" ng-model="selectedCompany" id="selectedCompany" onChange="this.submit" ng-options="company.name as company.name for company in companies | unique: 'company.name'">
             </select>
         </div>
     </form>
+    
+    <div>
+        <div ng-repeat="film in films | filter: filterByCompany">
+            <div ng-if="$index % 3 == 0" class="row"></div>
+                <div class="col-xs-4 film">                
+                    <h2><a href="{{film.url}}" target="_blank">{{film.name}}</a></h2>
+                    <h3>by {{film.company}}</h3>
+                    <div>
+                        <img ng-src="{{film.image}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

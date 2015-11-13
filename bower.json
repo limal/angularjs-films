@@ -2,7 +2,8 @@
   "name": "films",
   "dependencies": {
     "angularjs": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-filter": "latest"
   },
   "version": "0.0.0",
   "authors": [

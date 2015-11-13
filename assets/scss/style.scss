@@ -4,8 +4,22 @@ body {
     background: $bg_color;
     color: #333333;
     font-family: sans-serif;
+    margin: 2em 0;
 }
 
 .container {
     max-width: 800px;
+}
+
+h3 {
+    font-size: 1.0em;
+}
+
+.film h2 {
+    font-size: 1.25em;
+    min-height: 2.0em;
+}
+
+.row {
+    margin-bottom: 1em;
 }

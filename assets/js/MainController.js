@@ -3,34 +3,40 @@
     var errorMessage = "Sorry, there was an error in our system. Please try again.";
     var processingMessage = "Please wait. Processing...";
     
-    var MainController = function($scope, myfilms, $interval, $location) {
+    var MainController = function($scope, myfilms, $interval,$location) {
         $scope.processing = "Test";
-        $scope.company = {
-            name: ""
-        }
+        $scope.selectedCompany = "All";
         
         $scope.$watch(
-            "company.name",
+            "selectedCompany",
             function (newVal, oldVal) {
-                $scope.company.name = newVal;
-                $scope.changeCompany($scope.company);
+                if (typeof newVal != 'undefined') {
+                    $scope.selectedCompany = newVal;
+                }
             }
         );
-        
-        $scope.changeCompany = function(company) {
-            $scope.processing = processingMessage;
-            myfilms.filterFilms(company.name, onSuccess, onError);
-        };
         
         var onError = function(data) {
             $scope.processing = errorMessage;
         }
         
-        var onSuccess = function(data) {
+        var onSuccess = function(films, companies) {
             $scope.processing = "";
             
-            console.log(data);
+            $scope.films = films;
+            $scope.companies = companies;
         }
+        
+        // load film data
+        myfilms.filterFilms(onSuccess, onError);
+        
+        $scope.filterByCompany = function(film) {
+            if (typeof $scope.selectedCompany == "undefined" || $scope.selectedCompany == "All") {
+                return true;
+            } else {
+                return $scope.selectedCompany.indexOf(film.company) !== -1;
+            }
+        };
     }
     
     app.controller("MainController", ["$scope", "myfilms", "$interval", "$location", MainController]);
